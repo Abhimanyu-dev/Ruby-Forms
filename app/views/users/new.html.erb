@@ -1,0 +1,81 @@
+<h1>New User</h1>
+
+<%= render "form", user: @user %>
+<!--
+<form action="/users" method="post">
+ <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+ 
+    <label for="user[username]">Name:</label>
+    <input type="text" name="user[username]" id=""><br>
+    <% @user.errors.full_messages_for(:username).each do |message| %>
+    <%#
+      <div><%= message %></div>
+    <% end %>
+    <label for="user[email]">Email:</label>
+    <input type="email" name="user[email]" id=""><br>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+
+    <label for="user[password]">Password:</label>
+    <input type="password" name="user[password]" id="">
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+-->
+
+<!--
+<%= form_with(url: "/users", mehtod: "post") do%>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being created:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+    <%= label_tag('user[username]', "Name:") %>
+    <%= text_field_tag('user[username]') %>
+    <br>
+    <%= label_tag('user[email]', "Email:") %>
+    <%= email_field_tag('user[email]') %>
+    <br>
+    <%= label_tag('user[password]', "Password:") %>
+    <%= password_field_tag('user[password]') %>
+    <br>
+    <%= submit_tag("Submit") %>
+<% end %>
+-->
+<!--
+<%= form_with model: @user do |form| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being created:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+        </div>
+    <% end %>
+    <%= form.label :username, "Your username here:" %>
+    <%= form.text_field :username %>
+    <br>
+    <%= form.label :email, "Email" %>
+    <%= form.email_field :email, :placeholder=>"abc@xyz.com" %>
+    <br>
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password %>
+    <br>
+    <%= form.submit "Submit" %>
+<% end %>
+
+-->
